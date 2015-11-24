@@ -23,7 +23,7 @@
 FROM java:8-jdk
 MAINTAINER Nicolas De Loof <nicolas.deloof@gmail.com>
 
-ENV HOME /home/jenkins
+ENV HOME /var/lib/jenkins
 RUN useradd -c "Jenkins user" -d $HOME -m jenkins
 
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.52/remoting-2.52.jar \
@@ -32,8 +32,8 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 
-VOLUME /home/jenkins
-WORKDIR /home/jenkins
+VOLUME ${HOME}
+WORKDIR ${HOME}
 USER jenkins
 
 ENTRYPOINT ["jenkins-slave"]
