@@ -21,7 +21,6 @@
 #  THE SOFTWARE.
 
 FROM java:8-jdk
-MAINTAINER Nicolas De Loof <nicolas.deloof@gmail.com>
 
 ENV HOME /var/lib/jenkins
 RUN useradd -c "Jenkins user" -d $HOME -m jenkins
